@@ -1,0 +1,35 @@
+<h1><%= action_name.capitalize %> Patient</h1>
+<%= form_with model: @patient, local: true do |form| %>
+  <% if @patient.errors.any? %>
+    <div>
+      <h2><%= pluralize(@patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+      <ul>
+        <% @patient.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name %>
+  </div>
+
+  <div>
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div>
+    <%= form.label :email %>
+    <%= form.email_field :email %>
+  </div>
+
+  <div>
+    <%= form.label :next_appointment %>
+    <%= form.datetime_select :next_appointment %>
+  </div>
+
+  <%= form.submit %>
+<% end %>
