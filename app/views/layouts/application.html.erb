@@ -11,6 +11,14 @@
   </head>
 
   <body>
+    <nav>
+      <% if provider_signed_in? %>
+        <p>Welcome, <%= current_provider.email %>!</p>
+        <%= link_to 'Log out', destroy_provider_session_path, method: :delete %>
+      <% else %>
+        <%= link_to 'Log in', new_provider_session_path %>
+      <% end %>
+    </nav>
     <%= yield %>
   </body>
 </html>
